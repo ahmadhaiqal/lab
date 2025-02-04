@@ -17,6 +17,8 @@ spec:
       containers:
         - image: httpd:alpine3.19
           name: httpd
+          #command: ["/bin/bash", "-c"] # override the default command
+          #args: ["sleep 5; exit 1"] # sleep for 30 seconds then exit with an errorw
   strategy:
     type: RollingUpdate
     rollingUpdate:
