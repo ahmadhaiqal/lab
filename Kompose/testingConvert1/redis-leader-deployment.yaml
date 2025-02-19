@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.35.0 (9532ceef3)
+  labels:
+    io.kompose.service: redis-leader
+  name: redis-leader
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: redis-leader
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert
+        kompose.version: 1.35.0 (9532ceef3)
+      labels:
+        io.kompose.service: redis-leader
+    spec:
+      containers:
+        - image: redis
+          name: redis-leader
+          ports:
+            - containerPort: 3005
+              protocol: TCP
+      restartPolicy: Always
